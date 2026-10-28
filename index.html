@@ -2,7 +2,7 @@
 <title>Car Society UAE</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600&family=Chakra+Petch:wght@500;600&display=swap">
 <style>
-/* Layout: a game menu. Four screens behind a tab bar; the home screen opens on a night drive into the Dubai skyline. */
+/* Layout: a game menu. The home screen opens on a night drive into the Dubai skyline. */
 :root{
   color-scheme:dark;
   --asphalt:#080a11; --panel:#10131e; --panel-2:#171b2a; --line:#272c40;
@@ -162,23 +162,6 @@ pre.msg{margin:0;font:500 14px/1.6 var(--mono);white-space:pre-wrap;overflow-wra
 .contact-lines div{display:flex;flex-direction:column;gap:6px;padding-block:14px;border-top:1px solid var(--line)}
 .contact-lines strong,.contact-lines a{font:600 17px/1.3 var(--mono);user-select:all;overflow-wrap:anywhere}
 
-/* shop */
-.shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
-.prod{display:flex;flex-direction:column;gap:14px;min-width:0;--tee:#16171f;--ink:#f3f4f8;--acc:var(--amber);--edge:#3a4160}
-.prod.white{--tee:#eeeff3;--ink:#12131a;--acc:#e0245e;--edge:#eeeff3}
-.prod .mock{background:radial-gradient(circle at 50% 42%,#262c48,#0d0f19 72%);border:1px solid var(--line);padding:14px}
-.prod .mock>svg{display:block;width:100%;height:auto}
-.prod .tee{fill:var(--tee);stroke:var(--edge);stroke-width:2;stroke-linejoin:round}
-.prod text{font:800 italic 22px var(--display);fill:var(--ink);text-anchor:middle;letter-spacing:.01em}
-.prod text.acc{fill:var(--acc)}
-.prod .lg{fill:var(--ink)}
-.prod .price{font:600 14px/1 var(--mono);color:var(--amber);letter-spacing:.06em}
-.opts{display:grid;grid-template-columns:1fr 1fr 76px;gap:10px}
-.opts .f{gap:6px}
-.opts select,.opts input{padding:11px 10px}
-.album-state{font:600 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right}
-@media (max-width:560px){.album-state{grid-column:2;text-align:left}}
-
 footer{border-top:1px solid var(--line);margin-top:24px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-block:26px}
 footer svg{height:16px;width:auto;fill:var(--muted)}
@@ -207,9 +190,6 @@ footer p{font-size:13px;color:var(--muted)}
     <nav class="menu" aria-label="Main">
       <button type="button" data-go="home">Home</button>
       <button type="button" data-go="events">Events</button>
-      <button type="button" data-go="shop">Shop</button>
-      <button type="button" data-go="photos">Photos</button>
-      <button type="button" data-go="list"><span class="l">List an event</span><span class="s">List</span></button>
       <button type="button" data-go="contact">Contact</button>
     </nav>
   </div>
@@ -228,7 +208,6 @@ footer p{font-size:13px;color:var(--muted)}
       <p class="lede">Meets, drives, track days and shows from car groups across the Emirates, on one calendar. Founded in the UAE, for the people of the UAE.</p>
       <div class="row">
         <button class="btn" type="button" data-go="events">See what's on</button>
-        <button class="btn ghost" type="button" data-go="list">List your event</button>
       </div>
     </div>
   </div>
@@ -241,11 +220,11 @@ footer p{font-size:13px;color:var(--muted)}
           <span class="tag"><b>//</b> What CSAE is</span>
           <h2 class="h2">The UAE's car calendar.</h2>
         </div>
-        <p class="lede">Car Society UAE gathers events from clubs, crews, circuits and organisers across the country and lists them in one place, next to the merch those groups make.</p>
+        <p class="lede">Car Society UAE gathers events from clubs, crews, circuits and organisers across the country and puts them on one calendar.</p>
         <div class="facts">
           <div><strong>Events</strong><span>Meets, drives, track days, shows and race weekends.</span></div>
-          <div><strong>Groups</strong><span>Any UAE club or crew can list what they're running.</span></div>
-          <div><strong>Merch</strong><span>Club and crew merchandise in one shop.</span></div>
+          <div><strong>Groups</strong><span>Clubs, crews, circuits and organisers across the UAE.</span></div>
+          <div><strong>Emirates</strong><span>One calendar covering all seven emirates.</span></div>
         </div>
         <div class="panel insta">
           <span class="tag"><b>//</b> Instagram</span>
@@ -265,9 +244,9 @@ footer p{font-size:13px;color:var(--muted)}
         <div>
           <div class="head" style="margin-bottom:8px"><span class="tag"><b>//</b> For groups</span></div>
           <ul class="rules">
-            <li>Send us your event and we add it to the calendar.</li>
+            <li>Send event details through the CSAE Telegram publishing workflow.</li>
             <li>Take sign-ups through the site and share meet points privately with registered drivers.</li>
-            <li>List your merch in the shop.</li>
+            <li>Keep drivers connected to the original organiser and source.</li>
           </ul>
         </div>
       </div>
@@ -302,10 +281,6 @@ footer p{font-size:13px;color:var(--muted)}
         <div class="panel detail" id="detail"></div>
       </div>
       <div class="list" id="list"></div>
-      <div class="panel cta">
-        <div class="stack" style="gap:8px"><span class="tag"><b>//</b> Missing something?</span><h3 class="h3">Running a meet, drive or show? Put it on the calendar.</h3></div>
-        <button class="btn small" type="button" data-go="list">List your event</button>
-      </div>
     </div>
   </section>
 </div>
@@ -344,106 +319,6 @@ footer p{font-size:13px;color:var(--muted)}
             <li>Arrive with a full tank, 15 minutes before the start.</li>
             <li>Valid licence, registration and insurance. Your car, your responsibility.</li>
             <li>No revving or burnouts at meet points.</li>
-          </ul>
-        </aside>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- SHOP -->
-<div data-view="shop" hidden>
-  <section class="block">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag"><b>//</b> Shop</span>
-        <h2 class="h2">Merch from UAE car groups.</h2>
-        <p class="lede">Shirts and gear made by local clubs and crews. Order on WhatsApp and the group confirms price, payment and delivery. No payment is taken on this site.</p>
-      </div>
-      <div class="shop" id="shop"></div>
-      <div class="panel cta">
-        <div class="stack" style="gap:8px"><span class="tag"><b>//</b> For groups</span><h3 class="h3">Make merch for your club? List it here.</h3></div>
-        <button class="btn small" type="button" data-go="contact" data-ctype="List our merch">Get in touch</button>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- PHOTOS -->
-<div data-view="photos" hidden>
-  <section class="block">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag"><b>//</b> Photos</span>
-        <h2 class="h2">Get your car featured.</h2>
-        <p class="lede">We post cars from around the UAE on the CSAE Instagram. Tell us about yours, send the shots on WhatsApp, and we credit you when it goes up.</p>
-      </div>
-      <div class="two">
-        <div class="stack">
-          <form id="photoForm" novalidate>
-            <div class="f"><label for="p-name">Your name</label><input id="p-name" autocomplete="name" required><span class="err" id="e-p-name"></span></div>
-            <div class="f"><label for="p-ig">Instagram handle <em>(for the credit)</em></label><input id="p-ig" placeholder="@handle" autocapitalize="none" required><span class="err" id="e-p-ig"></span></div>
-            <div class="f"><label for="p-car">Car <em>(make, model, year)</em></label><input id="p-car" required><span class="err" id="e-p-car"></span></div>
-            <div class="f"><label for="p-drive">Taken at</label><select id="p-drive"></select></div>
-            <div class="f full"><label for="p-story">About the car <em>(optional: build, mods, where it was shot)</em></label><textarea id="p-story"></textarea></div>
-            <div class="f full"><label class="check" for="p-agree"><input id="p-agree" type="checkbox" required><span>These are my photos, or I have the photographer's OK, and CSAE can post them with credit.</span></label><span class="err" id="e-p-agree"></span></div>
-            <div class="f full"><button class="btn" type="submit">Review submission</button></div>
-          </form>
-          <div class="panel ready" id="photoReady" hidden tabindex="-1"></div>
-        </div>
-        <aside class="panel stack">
-          <span class="tag"><b>//</b> What gets featured</span>
-          <ul class="rules">
-            <li>The whole car in frame, shot in good light.</li>
-            <li>Original files, not screenshots. No watermarks or heavy filters.</li>
-            <li>Up to five photos per car, portrait or square.</li>
-          </ul>
-          <a class="btn small ghost" id="ig2" target="_blank" rel="noopener">Tag us on Instagram</a>
-        </aside>
-      </div>
-      <div class="head" style="margin-top:56px;margin-bottom:0">
-        <span class="tag"><b>//</b> Event albums</span>
-        <h2 class="h2">One album per event. Everyone adds to it.</h2>
-        <p class="lede">After an event we open a shared album. Anyone who was there can add their photos and comment on everyone else's.</p>
-      </div>
-      <div class="list" id="albums" style="margin-top:24px"></div>
-    </div>
-  </section>
-</div>
-
-<!-- LIST AN EVENT -->
-<div data-view="list" hidden>
-  <section class="block">
-    <div class="wrap">
-      <div class="head">
-        <span class="tag"><b>//</b> List an event</span>
-        <h2 class="h2">Put your event on the calendar.</h2>
-        <p class="lede">For clubs, crews, venues and organisers. Send us the details and we add it once we've checked them with you.</p>
-      </div>
-      <div class="two">
-        <div class="stack">
-          <form id="listForm" novalidate>
-            <div class="f"><label for="l-group">Group or organiser</label><input id="l-group" autocomplete="organization" required><span class="err" id="e-l-group"></span></div>
-            <div class="f"><label for="l-reach">Your WhatsApp or email</label><input id="l-reach" required><span class="err" id="e-l-reach"></span></div>
-            <div class="f full"><label for="l-title">Event name</label><input id="l-title" required><span class="err" id="e-l-title"></span></div>
-            <div class="f"><label for="l-type">Type</label><select id="l-type"><option>Meet</option><option>Drive</option><option>Track day</option><option>Show</option><option>Off-road</option><option>Other</option></select></div>
-            <div class="f"><label for="l-emirate">Emirate</label><select id="l-emirate"><option>Abu Dhabi</option><option selected>Dubai</option><option>Sharjah</option><option>Ajman</option><option>Umm Al Quwain</option><option>Ras Al Khaimah</option><option>Fujairah</option></select></div>
-            <div class="f"><label for="l-date">Date</label><input id="l-date" type="date" required><span class="err" id="e-l-date"></span></div>
-            <div class="f"><label for="l-time">Start time <em>(optional)</em></label><input id="l-time" type="time"></div>
-            <div class="f"><label for="l-venue">Venue or area</label><input id="l-venue" required><span class="err" id="e-l-venue"></span></div>
-            <div class="f"><label for="l-signup">Sign-ups</label><select id="l-signup"><option>Open to all, no sign-up</option><option>Take sign-ups through CSAE</option><option>We have our own link</option></select></div>
-            <div class="f full"><label for="l-link">Link <em>(optional: Instagram post, ticket page)</em></label><input id="l-link" inputmode="url" autocapitalize="none"></div>
-            <div class="f full"><label for="l-notes">Details <em>(optional)</em></label><textarea id="l-notes"></textarea></div>
-            <div class="f full"><button class="btn" type="submit">Review listing</button></div>
-          </form>
-          <div class="panel ready" id="listReady" hidden tabindex="-1"></div>
-        </div>
-        <aside class="panel stack">
-          <span class="tag"><b>//</b> What we list</span>
-          <ul class="rules">
-            <li>Events in the UAE that are open to the public or open to sign-ups.</li>
-            <li>Held at a proper venue, or on public roads at legal speeds. No street racing and no takeovers.</li>
-            <li>A named organiser we can reach.</li>
           </ul>
         </aside>
       </div>
@@ -502,12 +377,6 @@ const CLUB = {
 /* Calendar entries are loaded from data/events.json so approved Telegram
    submissions can update the live GitHub Pages site without editing HTML. */
 let EVENTS = [];
-/* by: the group that makes it. price: a string like "AED 120", or null. whatsapp: the group's number (falls back to CSAE's). */
-const MERCH = [
-  {id:"porsche", name:"I Need Money for Porsche", kind:"T-shirt", by:"CSAE", lines:["I NEED","MONEY FOR","PORSCHE."], price:null},
-  {id:"patrol", name:"I Need Money for a Patrol", kind:"T-shirt", by:"CSAE", lines:["I NEED","MONEY FOR","A PATROL."], price:null},
-  {id:"logo", name:"CSAE Logo Tee", kind:"T-shirt", by:"CSAE", logo:true, price:null}
-];
 
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -551,7 +420,7 @@ function action(e, cls){
 }
 
 /* ---------- navigation ---------- */
-const VIEWS = ["home","events","shop","photos","list","contact","join"];
+const VIEWS = ["home","events","contact","join"];
 let view = "home";
 function go(v, opts){
   if (v === "calendar") v = "events";
@@ -571,7 +440,6 @@ document.addEventListener("click", ev => {
   if (b.dataset.ev){ const e = EVENTS.find(x => x.id === b.dataset.ev); if (e){ filter = {emirate:"All", type:"All"}; pick(e); renderFilters(); renderCal(); renderList(); } }
   go(b.dataset.go);
   if (b.dataset.drive) $("#j-drive").value = b.dataset.drive;
-  if (b.dataset.ctype) $("#c-type").value = b.dataset.ctype;
 });
 
 /* ---------- home strip + clock ---------- */
@@ -719,21 +587,6 @@ $("#joinForm").addEventListener("submit", ev => {
   lines.push("I have a valid licence, registration and insurance, and I'll follow the convoy rules.");
   showReady($("#joinReady"), ev.target, "One tap left.", lines.join("\n"), "This opens WhatsApp with your registration written out. Press send there to finish. The organiser replies with the meet point and route.", e.whatsapp);
 });
-$("#listForm").addEventListener("submit", ev => {
-  ev.preventDefault();
-  if (!check([
-    ["l-group", v => v.length > 1, "Add the group or organiser name."],
-    ["l-reach", v => v.length > 4, "Add a WhatsApp number or email so we can confirm the listing."],
-    ["l-title", v => v.length > 2, "Add the event name."],
-    ["l-date", v => !!v, "Pick the date."],
-    ["l-venue", v => v.length > 1, "Add the venue or area."]
-  ])) return;
-  const p = parts(val("l-date"));
-  const lines = ["*Event listing request*", `Group: ${val("l-group")}`, `Contact: ${val("l-reach")}`, `Event: ${val("l-title")}`, `Type: ${val("l-type")}`, `Date: ${label(p)} ${p.y}${val("l-time") ? ", " + val("l-time") : ""}`, `Where: ${val("l-venue")}, ${val("l-emirate")}`, `Sign-ups: ${val("l-signup")}`];
-  if (val("l-link")) lines.push(`Link: ${val("l-link")}`);
-  if (val("l-notes")) lines.push(`Details: ${val("l-notes")}`);
-  showReady($("#listReady"), ev.target, "Ready to send to CSAE.", lines.join("\n"), "This opens WhatsApp with your listing written out. Press send there to finish. We reply to confirm before it goes on the calendar.");
-});
 $("#contactForm").addEventListener("submit", ev => {
   ev.preventDefault();
   if (!check([
@@ -744,21 +597,6 @@ $("#contactForm").addEventListener("submit", ev => {
   const lines = [`*${val("c-type")} enquiry*`, `From: ${val("c-name")}${val("c-brand") ? " (" + val("c-brand") + ")" : ""}`, `Reply to: ${val("c-reach")}`, "", val("c-msg")];
   showReady($("#contactReady"), ev.target, "Looks good.", lines.join("\n"), "This opens WhatsApp with your message written out. Press send there to finish.");
 });
-$("#photoForm").addEventListener("submit", ev => {
-  ev.preventDefault();
-  if (!check([
-    ["p-name", v => v.length > 1, "Add your name."],
-    ["p-ig", v => v.replace(/^@/,"").length > 1, "Add your Instagram handle so we can credit you."],
-    ["p-car", v => v.length > 1, "Tell us what the car is."],
-    ["p-agree", v => v, "Tick this to confirm we can post your photos."]
-  ])) return;
-  const e = EVENTS.find(x => x.id === val("p-drive"));
-  const lines = ["*Photo feature submission*", `Name: ${val("p-name")}`, `Instagram: @${val("p-ig").replace(/^@/,"")}`, `Car: ${val("p-car")}`];
-  if (e) lines.push(`Taken at: ${e.title} (${e.when})`);
-  if (val("p-story")) lines.push(`About the car: ${val("p-story")}`);
-  lines.push("These are my photos (or I have the photographer's OK) and CSAE can post them with credit.", "", "Photos attached below.");
-  showReady($("#photoReady"), ev.target, "Now add the photos.", lines.join("\n"), "This opens WhatsApp with your details written out. Press send there, then attach your photos in the same chat.");
-});
 function renderLines(){
   const out = [], line = (k, node) => { const d = el("div"); d.append(el("span","tag",k), node); out.push(d); };
   const ig = el("a",null, CLUB.instagram ? "@" + CLUB.instagram : "Instagram"); ig.href = igUrl(); ig.target = "_blank"; ig.rel = "noopener";
@@ -767,49 +605,6 @@ function renderLines(){
   if (CLUB.email) line("Email", el("strong",null,CLUB.email));
   line("Based in", el("strong",null,"United Arab Emirates"));
   $("#lines").replaceChildren(...out);
-}
-
-/* ---------- shop ---------- */
-function renderShop(){
-  const TEE = "M96 28 60 44 14 86 46 128 72 106V272H228V106l26 22 32-42-46-42-36-16c-10 26-98 26-108 0Z";
-  $("#shop").replaceChildren(...MERCH.map(p => {
-    const card = el("article","prod"), mock = el("div","mock");
-    const art = p.logo ? '<svg class="lg" x="90" y="112" width="120" height="37" viewBox="0 0 1240 380"><use href="#logo"/></svg>'
-      : p.lines.map((t, i) => `<text x="150" y="${134 + i * 25}"${i === p.lines.length - 1 ? ' class="acc"' : ""}>${t}</text>`).join("");
-    mock.innerHTML = `<svg viewBox="0 0 300 300" role="img" aria-label="${p.name} ${p.kind} mockup"><path class="tee" d="${TEE}"/>${art}</svg>`;
-    const sel = (key, lab, opts) => { const f = el("div","f"), l = el("label",null,lab), s = el("select"); s.id = `m-${p.id}-${key}`; l.htmlFor = s.id; opts.forEach(o => s.append(el("option",null,o))); f.append(l, s); return [f, s]; };
-    const [fc, colour] = sel("colour","Colour",["Black","White"]);
-    const [fs, size] = sel("size","Size",["S","M","L","XL","XXL"]); size.value = "L";
-    const fq = el("div","f"), lq = el("label",null,"Qty"), qty = el("input"); qty.type = "number"; qty.min = 1; qty.max = 10; qty.value = 1; qty.id = `m-${p.id}-qty`; lq.htmlFor = qty.id; fq.append(lq, qty);
-    const opts = el("div","opts"); opts.append(fc, fs, fq);
-    const buy = el("a","btn small","Order on WhatsApp"); buy.target = "_blank"; buy.rel = "noopener";
-    const sync = () => {
-      card.classList.toggle("white", colour.value === "White");
-      const n = Math.min(10, Math.max(1, parseInt(qty.value, 10) || 1));
-      buy.href = waUrl(["*Merch order*", `Item: ${p.name} (${p.kind}) by ${p.by}`, `Colour: ${colour.value}`, `Size: ${size.value}`, `Qty: ${n}`].join("\n"), p.whatsapp);
-    };
-    [colour, size, qty].forEach(c => c.addEventListener("input", sync)); sync();
-    const tag = el("span","tag"); tag.append(el("b",null,p.kind), document.createTextNode(` · By ${p.by}`));
-    card.append(mock, tag, el("h3","h3",p.name), el("span","price", p.price || "Price announced soon"), opts, buy);
-    return card;
-  }));
-}
-
-/* ---------- photos ---------- */
-function renderAlbums(){
-  const rows = EVENTS.filter(e => e.endTs < Date.now()).reverse().map(e => {
-    const r = el("div","item"), m = el("div","m");
-    m.append(el("h3","h3",e.title), el("span",null,`By ${e.by} · ${e.venue}, ${e.emirate}`));
-    let act;
-    if (e.album){ act = el("a","btn small ghost","Open album"); act.href = e.album; act.target = "_blank"; act.rel = "noopener"; }
-    else act = el("span","album-state","Album link coming");
-    r.append(dateBlock(e), m, act); return r;
-  });
-  $("#albums").replaceChildren(...(rows.length ? rows : [el("p","empty","Albums open after each event. The first ones will appear here.")]));
-}
-function fillPhotoSelect(){
-  const o0 = el("option",null,"Not at a listed event"); o0.value = "";
-  $("#p-drive").replaceChildren(o0, ...EVENTS.map(e => { const o = el("option",null,`${e.title} · ${label(e.s)}`); o.value = e.id; return o; }));
 }
 
 /* ---------- hero: night road into the Dubai skyline ---------- */
@@ -915,11 +710,11 @@ async function boot(){
     EVENTS = [];
   }
   prepareEvents();
-  $("#ig1").href = igUrl(); $("#ig2").href = igUrl();
+  $("#ig1").href = igUrl();
   $("#checked").textContent = `Dates checked ${CLUB.checked} against organisers' pages. Confirm before you travel.`;
   const first = upcoming()[0] || EVENTS[EVENTS.length - 1];
   if (first) pick(first); else { const n = dubaiNow(); cal = {y:n.getUTCFullYear(), m:n.getUTCMonth()}; }
-  renderStrip(); renderClock(); renderFilters(); renderCal(); renderList(); renderLines(); renderShop(); renderAlbums(); fillPhotoSelect();
+  renderStrip(); renderClock(); renderFilters(); renderCal(); renderList(); renderLines();
   setInterval(renderClock, 30000);
   go((location.hash || "").slice(1) || "home", {keepScroll:true});
   window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (v !== view) go(v); });

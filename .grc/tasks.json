@@ -149,5 +149,43 @@
       }
     ],
     "notes": "Recurring operational work after bot activation. Every event requires human approval before GitHub commit. Begin after T4 activation; this is the ongoing operating loop."
+  },
+  {
+    "id": "T6",
+    "title": "Remove Shop, Photos, and List tabs",
+    "status": "doing",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Remove Shop navigation and page",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Remove Photos navigation and page",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Remove List an event navigation and page",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Delete tab-specific CSS and JavaScript",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Run regression and HTTP smoke tests",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Deploy and verify GitHub Pages",
+        "done": false
+      }
+    ],
+    "notes": "User-requested simplification of the public GitHub Pages navigation. Local suite: 7/7 tests pass; HTML/JS structure valid; HTTP smoke test shows tabs home/events/contact and seven events."
   }
 ]

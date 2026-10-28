@@ -1,0 +1,90 @@
+[
+  {
+    "id": "dxb-track-1011",
+    "title": "Car Track Day",
+    "by": "Dubai Autodrome",
+    "type": "Track day",
+    "emirate": "Dubai",
+    "venue": "Dubai Autodrome, Motor City",
+    "date": "2026-10-11",
+    "time": "18:00",
+    "url": "https://dubaiautodrome.ae/whats-on/",
+    "note": "Evening track session in your own car. Booking is with the circuit."
+  },
+  {
+    "id": "dxb-track-1019",
+    "title": "Car Track Day",
+    "by": "Dubai Autodrome",
+    "type": "Track day",
+    "emirate": "Dubai",
+    "venue": "Dubai Autodrome, Motor City",
+    "date": "2026-10-19",
+    "time": "18:00",
+    "url": "https://dubaiautodrome.ae/whats-on/",
+    "note": "Evening track session in your own car. Booking is with the circuit."
+  },
+  {
+    "id": "dxb-roll-1023",
+    "title": "Roll Racing",
+    "by": "Dubai Autodrome",
+    "type": "Track day",
+    "emirate": "Dubai",
+    "venue": "Dubai Autodrome, Motor City",
+    "date": "2026-10-23",
+    "time": "20:00",
+    "url": "https://dubaiautodrome.ae/whats-on/",
+    "note": "Roll racing night at the circuit. Booking is with the circuit."
+  },
+  {
+    "id": "dxb-track-1026",
+    "title": "Car Track Day",
+    "by": "Dubai Autodrome",
+    "type": "Track day",
+    "emirate": "Dubai",
+    "venue": "Dubai Autodrome, Motor City",
+    "date": "2026-10-26",
+    "time": "18:00",
+    "url": "https://dubaiautodrome.ae/whats-on/",
+    "note": "Evening track session in your own car. Booking is with the circuit."
+  },
+  {
+    "id": "4x4-expo-1120",
+    "title": "Dubai 4x4 Expo",
+    "by": "Dubai 4x4 Expo",
+    "type": "Show",
+    "emirate": "Dubai",
+    "venue": "Safa Park",
+    "date": "2026-11-20",
+    "end": "2026-11-22",
+    "hoursText": "14:00 to 22:00 daily",
+    "entry": "Free (park entry fee applies)",
+    "url": "https://4x4.ae/",
+    "note": "Off-road and 4x4 show in the park."
+  },
+  {
+    "id": "icons-porsche-1121",
+    "title": "Icons of Porsche",
+    "by": "Porsche",
+    "type": "Show",
+    "emirate": "Dubai",
+    "venue": "The Square, Nad Al Sheba",
+    "date": "2026-11-21",
+    "end": "2026-11-22",
+    "entry": "Ticketed. Under-12s free with a ticketed adult",
+    "url": "https://iconsofporsche.com/",
+    "note": "Sixth edition of the Porsche festival, at a new venue this year."
+  },
+  {
+    "id": "abu-dhabi-gp-1204",
+    "title": "Formula 1 Abu Dhabi Grand Prix",
+    "by": "Yas Marina Circuit",
+    "type": "Motorsport",
+    "emirate": "Abu Dhabi",
+    "venue": "Yas Marina Circuit, Yas Island",
+    "date": "2026-12-04",
+    "end": "2026-12-06",
+    "entry": "Ticketed",
+    "url": "https://www.yasmarinacircuit.com/",
+    "note": "Formula 1 race weekend at Yas Marina."
+  }
+]

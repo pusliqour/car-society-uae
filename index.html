@@ -499,18 +499,9 @@ const CLUB = {
   email: "",          // optional
   checked: "9 Oct 2026" // when the event dates below were last checked against organisers' pages
 };
-/* One entry per event. date/end are UAE dates; time is UAE time (leave out for all-day).
-   url: organiser's page. signup: true to take registrations through this site (whatsapp: organiser number).
-   album: shared album link once the event has happened. */
-const EVENTS = [
-  {id:"dxb-track-1011", title:"Car Track Day", by:"Dubai Autodrome", type:"Track day", emirate:"Dubai", venue:"Dubai Autodrome, Motor City", date:"2026-10-11", time:"18:00", url:"https://dubaiautodrome.ae/whats-on/", note:"Evening track session in your own car. Booking is with the circuit."},
-  {id:"dxb-track-1019", title:"Car Track Day", by:"Dubai Autodrome", type:"Track day", emirate:"Dubai", venue:"Dubai Autodrome, Motor City", date:"2026-10-19", time:"18:00", url:"https://dubaiautodrome.ae/whats-on/", note:"Evening track session in your own car. Booking is with the circuit."},
-  {id:"dxb-roll-1023", title:"Roll Racing", by:"Dubai Autodrome", type:"Track day", emirate:"Dubai", venue:"Dubai Autodrome, Motor City", date:"2026-10-23", time:"20:00", url:"https://dubaiautodrome.ae/whats-on/", note:"Roll racing night at the circuit. Booking is with the circuit."},
-  {id:"dxb-track-1026", title:"Car Track Day", by:"Dubai Autodrome", type:"Track day", emirate:"Dubai", venue:"Dubai Autodrome, Motor City", date:"2026-10-26", time:"18:00", url:"https://dubaiautodrome.ae/whats-on/", note:"Evening track session in your own car. Booking is with the circuit."},
-  {id:"4x4-expo-1120", title:"Dubai 4x4 Expo", by:"Dubai 4x4 Expo", type:"Show", emirate:"Dubai", venue:"Safa Park", date:"2026-11-20", end:"2026-11-22", hoursText:"14:00 to 22:00 daily", entry:"Free (park entry fee applies)", url:"https://4x4.ae/", note:"Off-road and 4x4 show in the park."},
-  {id:"icons-porsche-1121", title:"Icons of Porsche", by:"Porsche", type:"Show", emirate:"Dubai", venue:"The Square, Nad Al Sheba", date:"2026-11-21", end:"2026-11-22", entry:"Ticketed. Under-12s free with a ticketed adult", url:"https://iconsofporsche.com/", note:"Sixth edition of the Porsche festival, at a new venue this year."},
-  {id:"abu-dhabi-gp-1204", title:"Formula 1 Abu Dhabi Grand Prix", by:"Yas Marina Circuit", type:"Motorsport", emirate:"Abu Dhabi", venue:"Yas Marina Circuit, Yas Island", date:"2026-12-04", end:"2026-12-06", entry:"Ticketed", url:"https://www.yasmarinacircuit.com/", note:"Formula 1 race weekend at Yas Marina."}
-];
+/* Calendar entries are loaded from data/events.json so approved Telegram
+   submissions can update the live GitHub Pages site without editing HTML. */
+let EVENTS = [];
 /* by: the group that makes it. price: a string like "AED 120", or null. whatsapp: the group's number (falls back to CSAE's). */
 const MERCH = [
   {id:"porsche", name:"I Need Money for Porsche", kind:"T-shirt", by:"CSAE", lines:["I NEED","MONEY FOR","PORSCHE."], price:null},
@@ -527,15 +518,17 @@ const GST = 4 * 3600e3, DAY = 864e5;
 const pad = n => String(n).padStart(2, "0");
 const parts = iso => { const [y, m, d] = iso.split("-").map(Number); return {y, m: m - 1, d, day: Date.UTC(y, m - 1, d)}; };
 const label = p => `${DOW[new Date(p.day).getUTCDay()]} ${p.d} ${MON[p.m].slice(0, 3)}`;
-EVENTS.forEach(e => {
-  e.s = parts(e.date); e.e = parts(e.end || e.date); e.multi = e.e.day > e.s.day;
-  const [h, mi] = (e.time || "00:00").split(":").map(Number);
-  e.ts = e.s.day + h * 3600e3 + mi * 60e3 - GST;
-  e.endTs = e.multi || !e.time ? e.e.day + DAY - GST : e.ts + 3 * 3600e3;
-  const from = label(e.s);
-  e.when = e.multi ? `${e.s.m === e.e.m ? from.slice(0, from.lastIndexOf(" ")) : from} to ${label(e.e)}` : from + (e.time ? `, ${e.time}` : "");
-});
-EVENTS.sort((a, b) => a.ts - b.ts);
+function prepareEvents(){
+  EVENTS.forEach(e => {
+    e.s = parts(e.date); e.e = parts(e.end || e.date); e.multi = e.e.day > e.s.day;
+    const [h, mi] = (e.time || "00:00").split(":").map(Number);
+    e.ts = e.s.day + h * 3600e3 + mi * 60e3 - GST;
+    e.endTs = e.multi || !e.time ? e.e.day + DAY - GST : e.ts + 3 * 3600e3;
+    const from = label(e.s);
+    e.when = e.multi ? `${e.s.m === e.e.m ? from.slice(0, from.lastIndexOf(" ")) : from} to ${label(e.e)}` : from + (e.time ? `, ${e.time}` : "");
+  });
+  EVENTS.sort((a, b) => a.ts - b.ts);
+}
 const dubaiNow = () => new Date(Date.now() + GST);
 const upcoming = list => (list || EVENTS).filter(e => e.endTs > Date.now());
 const igUrl = () => "https://www.instagram.com/" + (CLUB.instagram ? encodeURIComponent(CLUB.instagram) + "/" : "");
@@ -910,14 +903,29 @@ const sky = (() => {
 })();
 
 /* ---------- boot ---------- */
-$("#ig1").href = igUrl(); $("#ig2").href = igUrl();
-$("#checked").textContent = `Dates checked ${CLUB.checked} against organisers' pages. Confirm before you travel.`;
-{ const first = upcoming()[0] || EVENTS[EVENTS.length - 1]; if (first) pick(first); else { const n = dubaiNow(); cal = {y:n.getUTCFullYear(), m:n.getUTCMonth()}; } }
-renderStrip(); renderClock(); renderFilters(); renderCal(); renderList(); renderLines(); renderShop(); renderAlbums(); fillPhotoSelect();
-setInterval(renderClock, 30000);
-go((location.hash || "").slice(1) || "home", {keepScroll:true});
-window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (v !== view) go(v); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (view === "home") window.dispatchEvent(new Event("resize")); });
+async function boot(){
+  try {
+    const response = await fetch("./data/events.json", {cache:"no-store"});
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Event feed is not an array");
+    EVENTS = data;
+  } catch (error) {
+    console.error("Could not load CSAE events", error);
+    EVENTS = [];
+  }
+  prepareEvents();
+  $("#ig1").href = igUrl(); $("#ig2").href = igUrl();
+  $("#checked").textContent = `Dates checked ${CLUB.checked} against organisers' pages. Confirm before you travel.`;
+  const first = upcoming()[0] || EVENTS[EVENTS.length - 1];
+  if (first) pick(first); else { const n = dubaiNow(); cal = {y:n.getUTCFullYear(), m:n.getUTCMonth()}; }
+  renderStrip(); renderClock(); renderFilters(); renderCal(); renderList(); renderLines(); renderShop(); renderAlbums(); fillPhotoSelect();
+  setInterval(renderClock, 30000);
+  go((location.hash || "").slice(1) || "home", {keepScroll:true});
+  window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (v !== view) go(v); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (view === "home") window.dispatchEvent(new Event("resize")); });
+}
+boot();
 </script>
 
 </body></html>

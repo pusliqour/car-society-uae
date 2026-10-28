@@ -1,0 +1,153 @@
+[
+  {
+    "id": "T1",
+    "title": "Publish GitHub-backed CSAE event calendar",
+    "status": "done",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Preserve supplied CSAE design",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Move inline events to data/events.json",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Validate existing event data",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Deploy and verify GitHub Pages",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      }
+    ],
+    "notes": "Live at https://pusliqour.github.io/car-society-uae/ from pusliqour/car-society-uae main. Deployed in commit e6667ee; live Pages and seven-event JSON feed verified built."
+  },
+  {
+    "id": "T2",
+    "title": "Build Telegram-to-GitHub event ingestion",
+    "status": "done",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Parse labeled Instagram submissions",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Generate website event schema",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Require chat-bound one-time approval",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Commit validated events through GitHub",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Reject duplicates",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      }
+    ],
+    "notes": "Approval-gated; approved updates commit through GitHub Contents API and Pages rebuilds from main. Four offline tests pass; adapter verified with python-telegram-bot 22.5."
+  },
+  {
+    "id": "T3",
+    "title": "Connect CSAE project to GRC",
+    "status": "done",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Initialize GRC project",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Mirror completed and pending work",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Set resume card",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Record handoff",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      },
+      {
+        "text": "Commit GRC project metadata",
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
+      }
+    ],
+    "notes": "Register project state, task history, resume card, and agent handoff in GRC. GRC initialized and real workstreams mirrored as T1-T5. Project manifest now includes the full integration flow; resume card and T4 handoff saved; metadata ready to commit."
+  },
+  {
+    "id": "T4",
+    "title": "Activate Telegram publishing bot",
+    "status": "blocked",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Receive and securely store BotFather token",
+        "done": false
+      },
+      {
+        "text": "Discover and confirm allowed chat ID",
+        "done": false
+      },
+      {
+        "text": "Start polling bot",
+        "done": false
+      },
+      {
+        "text": "Run preview-only smoke test",
+        "done": false
+      },
+      {
+        "text": "Publish one approved real event",
+        "done": false
+      }
+    ],
+    "notes": "Blocked until user supplies a BotFather token and confirms the allowed Telegram chat identity. Waiting for BotFather token; chat ID will be discovered and confirmed after /start."
+  },
+  {
+    "id": "T5",
+    "title": "Maintain the growing CSAE event calendar",
+    "status": "todo",
+    "last_agent": "hermes/gpt-5.6-sol",
+    "subtasks": [
+      {
+        "text": "Review event preview",
+        "done": false
+      },
+      {
+        "text": "Approve or reject submission",
+        "done": false
+      },
+      {
+        "text": "Verify GitHub commit",
+        "done": false
+      },
+      {
+        "text": "Confirm Pages feed update",
+        "done": false
+      }
+    ],
+    "notes": "Recurring operational work after bot activation. Every event requires human approval before GitHub commit. Begin after T4 activation; this is the ongoing operating loop."
+  }
+]

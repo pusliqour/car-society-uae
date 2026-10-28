@@ -1,0 +1,56 @@
+{
+  "name": "CSAE",
+  "goal": "Operate a public UAE car-event calendar where approved Telegram submissions are validated, committed through GitHub, and published automatically on GitHub Pages.",
+  "features": [
+    "Outlook-style public UAE car-event calendar",
+    "External Git-tracked event feed in data/events.json",
+    "Approval-gated Telegram event ingestion",
+    "Duplicate and schema validation before publication",
+    "GitHub Contents API commits with optimistic concurrency",
+    "Automatic GitHub Pages publication from main",
+    "GRC task, timeline, resume, and handoff coordination"
+  ],
+  "status": "active — site live; Telegram activation waiting for credentials",
+  "dashboard": ".grc/dashboard.html",
+  "flow": [
+    {
+      "title": "Telegram intake",
+      "desc": "A permitted operator sends an Instagram link and labeled event details; publication always requires an explicit approval.",
+      "items": [
+        {"text": "BotFather bot identity and token", "state": "blocked"},
+        {"text": "Allowlisted Telegram chat", "state": "blocked"},
+        {"text": "Strict labeled submission parser", "state": "built"},
+        {"text": "Chat-bound one-time approval preview", "state": "built"}
+      ]
+    },
+    {
+      "title": "GitHub publication",
+      "desc": "Approved events are validated and committed to the repository; GitHub Pages rebuilds the public calendar from main.",
+      "items": [
+        {"text": "Duplicate and schema validation", "state": "built"},
+        {"text": "GitHub Contents API update with SHA concurrency", "state": "built"},
+        {"text": "data/events.json as calendar source", "state": "built"},
+        {"text": "GitHub Pages branch deployment", "state": "built"}
+      ]
+    },
+    {
+      "title": "GRC coordination",
+      "desc": "GRC keeps the project state portable across Hermes, local models, and future agents.",
+      "items": [
+        {"text": "Tasks T1-T5 with deterministic progress", "state": "built"},
+        {"text": "Timeline attribution", "state": "built"},
+        {"text": "Resume-here card", "state": "built"},
+        {"text": "Agent handoff for credential activation", "state": "built"}
+      ]
+    }
+  ],
+  "flow_note": "The operating loop is Telegram submission → human approval → validated GitHub commit → automatic GitHub Pages refresh. GRC records the work, blockers, and exact next action so any connected agent can resume safely.",
+  "sections": [
+    {
+      "title": "System connections",
+      "short": "Telegram supplies events, GitHub stores and publishes them, and GRC coordinates the work.",
+      "open": true,
+      "html": "<ul><li><b>Live site:</b> <a href='https://pusliqour.github.io/car-society-uae/'>pusliqour.github.io/car-society-uae</a></li><li><b>Repository:</b> <a href='https://github.com/pusliqour/car-society-uae'>github.com/pusliqour/car-society-uae</a></li><li><b>Event source:</b> <code>data/events.json</code></li><li><b>Bot entry point:</b> <code>scripts/run_bot.sh</code></li><li><b>Only blocker:</b> BotFather token plus confirmed Telegram chat ID.</li></ul>"
+    }
+  ]
+}

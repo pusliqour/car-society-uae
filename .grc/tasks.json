@@ -153,7 +153,7 @@
   {
     "id": "T6",
     "title": "Remove Shop, Photos, and List tabs",
-    "status": "doing",
+    "status": "done",
     "last_agent": "hermes/gpt-5.6-sol",
     "subtasks": [
       {
@@ -183,9 +183,10 @@
       },
       {
         "text": "Deploy and verify GitHub Pages",
-        "done": false
+        "done": true,
+        "agent": "hermes/gpt-5.6-sol"
       }
     ],
-    "notes": "User-requested simplification of the public GitHub Pages navigation. Local suite: 7/7 tests pass; HTML/JS structure valid; HTTP smoke test shows tabs home/events/contact and seven events."
+    "notes": "User-requested simplification of the public GitHub Pages navigation. Local suite: 7/7 tests pass; HTML/JS structure valid; HTTP smoke test shows tabs home/events/contact and seven events. Deployed in commit 7a54681; public Pages HTML verified with only Home, Events, and Contact navigation."
   }
 ]

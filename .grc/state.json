@@ -1,7 +1,7 @@
 {
-  "now": "CSAE remains live on GitHub Pages. Shop, Photos, and List an event tabs/pages have been removed locally; only Home, Events, and Contact remain in the main navigation. T6 is verified locally and awaiting deployment.",
-  "next": "Deploy and verify T6, then resume T4 when the BotFather token is supplied.",
+  "now": "CSAE is live with simplified navigation: Home, Events, and Contact only. T6 is deployed and verified; the seven-event feed and Telegram-to-GitHub implementation remain intact.",
+  "next": "Resume T4 when the BotFather token is supplied: securely configure the token, discover and confirm the chat ID, then run a preview-only smoke test.",
   "blocked": "T4 still requires the user's BotFather token and confirmed Telegram chat ID.",
   "last_agent": "hermes/gpt-5.6-sol",
-  "updated": "2026-10-28T20:30:30+04:00"
+  "updated": "2026-10-28T20:31:35+04:00"
 }
